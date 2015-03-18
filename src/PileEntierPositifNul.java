@@ -6,8 +6,9 @@ public class PileEntierPositifNul
 	private int indice_pile;
 	
 	public void empiler(int entier)
+	
 	{
-
+ // zzzfzrrerdd rdrr 
 		
 		if(taille != capacite) // si pile pas pleine
 		{
