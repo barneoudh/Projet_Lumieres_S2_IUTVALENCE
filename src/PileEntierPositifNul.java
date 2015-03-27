@@ -8,20 +8,20 @@ public class PileEntierPositifNul
 	public void empiler(int entier)
 	
 	{
- // zzzfzrrerdd rdrr 
+ //aaaaaaaaaaaaaaaaaaaaaaa
 		
 		if(taille != capacite) // si pile pas pleine
 		{
-			if(entier < 0) // si l'entier est strictement négatif
+			if(entier < 0) // si l'entier est strictement nÃ©gatif
 			{
-				System.out.println("Entier négatif !");
+				System.out.println("Entier nÃ©gatif !");
 			}
 			else // si l'entier est positif ou nul
 			{
-			pile[indice_pile] = entier; // on place l'entier à l'indice dans le tab
+			pile[indice_pile] = entier; // on place l'entier Ã  l'indice dans le tab
 			taille = taille+1; // on modifie la taille
 			indice_pile = indice_pile-1; // case suivante
-			System.out.println("Succès !");
+			System.out.println("SuccÃ¨s !");
 			}		
 		}
 		else // si pile pleine
@@ -40,10 +40,10 @@ public class PileEntierPositifNul
 		{
 		
 			element_depile = pile[indice_pile];
-			pile[indice_pile] = -1000; // on met la case à null...
+			pile[indice_pile] = -1000; // on met la case Ã  null...
 			taille = taille-1; // on modifie la taille
 			indice_pile = indice_pile+1; // case suivante
-			System.out.println("Succès !");
+			System.out.println("SuccÃ¨s !");
 			return(element_depile);		
 		}
 		else // si pile pleine
