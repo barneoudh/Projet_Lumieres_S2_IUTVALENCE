@@ -8,7 +8,9 @@ public class PileEntierPositifNul
 	public void empiler(int entier)
 	
 	{
- //aaaaaaaaaaaaaaaaaaaaaaa
+ //aaaaadvdvdvd
+		
+		// gfefef
 		
 		if(taille != capacite) // si pile pas pleine
 		{
