@@ -1,5 +1,5 @@
-Motus
-=====
+Othello
+=======
 
 ## Relectures
 
