@@ -1,9 +1,12 @@
-
+/* TODO Mettre dans un package. */
+/* TODO JAVADOC. */
+/* TODO Pourquoi une classe et pas un enum directement ? */
 public class Couleur {
-	
-	private static final int NOIR = 1;
-	private static final int BLANC = 0;
-	private static final int VERT = 2;
-	
-	
+    /* TODO Pourquoi ces valeurs ? Arbitraire ? */
+    /* TODO JAVADOC. */
+    private static final int NOIR  = 1;
+    /* TODO JAVADOC. */
+    private static final int BLANC = 0;
+    /* TODO JAVADOC. */
+    private static final int VERT  = 2;
 }
