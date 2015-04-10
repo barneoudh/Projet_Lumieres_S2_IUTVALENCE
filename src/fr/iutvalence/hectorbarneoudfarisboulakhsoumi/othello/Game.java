@@ -1,22 +1,29 @@
 package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
 
-/** Projet Othello
+/**
+ * Othello game: the players and the grid.
  * 
- * @author Hector Barneoud / Faris Boulakhsoumi 
- * TD 3F
+ * @author Hector Barneoud / Faris Boulakhsoumi
+ * @version 1.0.0
+ * @see Player
+ * @see Grid
  */
-
-/* TODO Mettre dans un package. */
-/* TODO JAVADOC. */
 public class Game {
-	/* TODO Inutile dans un premier temps. */
 	/* TODO JAVADOC. */
-	private int gameNumber;
+	private final Player player1;
 	/* TODO JAVADOC. */
-	private Player player1;
+	private final Player player2;
 	/* TODO JAVADOC. */
-	private Player player2;
-	/* TODO JAVADOC. */
-	private Grid grid;
+	private final Grid grid;
+
+	/**
+	 * @param player1
+	 * @param player2
+	 */
+	public Game(String player1, String player2) {
+		this.player1 = new Player(player1, Pawn.BLACK);
+		this.player2 = new Player(player2, Pawn.WHITE);
+		this.grid = new Grid();
+	}
 
 }

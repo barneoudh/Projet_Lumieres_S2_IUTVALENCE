@@ -1,28 +1,20 @@
 package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
 
-/** Projet Othello
+/**
+ * TODO
  * 
- * @author Hector Barneoud / Faris Boulakhsoumi 
- * TD 3F
+ * @author Hector Barneoud / Faris Boulakhsoumi TD 3F
  */
+public enum Pawn {
+	BLACK(1), WHITE(0);
 
-/* TODO Mettre dans un package. */
-/* TODO JAVADOC. */
-public class Pawn {
-	/* TODO À quoi sert ce champ ? */
-	/* TODO JAVADOC. */
-	private static final int TOTALPAWN = 64;
-	/* TODO JAVADOC. */
-	private Color pawnColor;
+	private final int num;
 
-	/* TODO JAVADOC. */
-	public Pawn(Color pawnCol) {
-		pawnColor = pawnCol;
-}
+	Pawn(final int num) {
+		this.num = num;
+	}
 
-	public void colorChange(Color currentColor) {
-			/* TODO. */
-		
-}
-	
+	public int num() {
+		return num;
+	}
 }
