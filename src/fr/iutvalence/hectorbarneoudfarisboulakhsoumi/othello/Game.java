@@ -9,21 +9,33 @@ package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
  * @see Grid
  */
 public class Game {
-	/* TODO JAVADOC. */
+	/* We define a player one with player type. */
 	private final Player player1;
-	/* TODO JAVADOC. */
+	/* We define a player two with player type.. */
 	private final Player player2;
-	/* TODO JAVADOC. */
+	/* A game takes a grid with Grid type as attribute. */
 	private final Grid grid;
 
 	/**
-	 * @param player1
-	 * @param player2
+	 * @param We assign Black pawns to the player 1
+	 * @param We assign White pawns to the player 2
 	 */
 	public Game(String player1, String player2) {
 		this.player1 = new Player(player1, Pawn.BLACK);
 		this.player2 = new Player(player2, Pawn.WHITE);
 		this.grid = new Grid();
+	}
+
+	public Grid getGrid() {
+		return grid;
+	}
+
+	public Player getPlayer2() {
+		return player2;
+	}
+
+	public Player getPlayer1() {
+		return player1;
 	}
 
 }

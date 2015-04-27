@@ -6,9 +6,7 @@ package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
  * TD 3F
  */
 
-/* TODO Mettre dans un package. */
-/* TODO JAVADOC. */
-/* TODO À quoi sert cette classe ? */
+/* Application which display the start grid */
 
 public class GridGeneration
 {

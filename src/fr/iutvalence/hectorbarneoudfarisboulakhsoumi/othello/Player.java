@@ -1,24 +1,30 @@
 package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
+/**
+ * Othello game: the player.
+ * 
+ * @author Hector Barneoud / Faris Boulakhsoumi
+ * @version 1.0.0
+ * @see Pawn
+ */
 
-/* TODO JAVADOC. */
 public class Player {
-	/* TODO JAVADOC. */
+	/* We define a strict string for the nickname of the player. */
 	private final String nickname;
-	/* TODO JAVADOC. */
+	/* We define a strict pawnColor for the player. */
 	private final Pawn pawnColor;
 
-	/* TODO JAVADOC. */
-	public Player(String pseudo, Pawn coulPion) {
-		nickname = pseudo;
-		pawnColor = coulPion;
+	/* We make a Player Constructor. */
+	public Player(String nickName, Pawn pawnC) {
+		nickname = nickName;
+		pawnColor = pawnC;
 	}
 
-	/* TODO JAVADOC. */
+	/* We make a pawncolor getter. */
 	public Pawn color() {
 		return pawnColor;
 	}
 
-	/* TODO JAVADOC. */
+	/* We make a nickname getter. */
 	public String nickname() {
 		return nickname;
 	}

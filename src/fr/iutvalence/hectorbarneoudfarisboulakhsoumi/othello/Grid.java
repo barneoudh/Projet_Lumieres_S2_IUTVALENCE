@@ -1,15 +1,18 @@
 package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
 
-/* TODO JAVADOC. */
+/* We make the Grid class, in order to describe the attributs and methods. */
 public class Grid {
-	/* TODO JAVADOC. */
-	private static final int TAILLE_COTE = 8;
-	/* TODO JAVADOC. */
+	/*  Constant for the Side size grid. */
+	private static final int SIDE_SIZE = 8;
+	/*  Set pawntable as attribut to the Grid. The grids could be composed of black or white pawn or nothing */
 	private final Pawn[][] grid;
-	
-	/* TODO À quoi sert le second paramètre ? */
-	/* TODO JAVADOC. */
+
+	/* This is the constructor for the Grid. */
 	public Grid() {
-		this.grid = new Pawn[TAILLE_COTE][TAILLE_COTE];
+		this.grid = new Pawn[SIDE_SIZE][SIDE_SIZE];
+	}
+
+	public Pawn[][] getGrid() {
+		return grid;
 	}
 }

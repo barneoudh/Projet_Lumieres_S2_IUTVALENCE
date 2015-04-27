@@ -1,12 +1,13 @@
 package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
 
 /**
- * TODO
+ * Othello Pawn.
  * 
- * @author Hector Barneoud / Faris Boulakhsoumi TD 3F
+ * @author Hector Barneoud / Faris Boulakhsoumi
+ * @version 1.0.0
  */
 public enum Pawn {
-	BLACK(1), WHITE(0);
+	BLACK(1), WHITE(0), NULL(-1);
 
 	private final int num;
 
@@ -17,4 +18,6 @@ public enum Pawn {
 	public int num() {
 		return num;
 	}
+	
+	
 }
