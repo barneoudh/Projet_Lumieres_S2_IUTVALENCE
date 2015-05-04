@@ -15,4 +15,8 @@ public class Grid {
 	public Pawn[][] getGrid() {
 		return grid;
 	}
+	
+	public string toString{
+		
+	}
 }
