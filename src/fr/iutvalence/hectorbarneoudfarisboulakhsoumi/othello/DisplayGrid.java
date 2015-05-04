@@ -8,7 +8,7 @@ package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
 
 /* Application which display the start grid */
 
-public class GridGeneration
+public class DisplayGrid
 {
 	public static void main(String[] args)
 	{

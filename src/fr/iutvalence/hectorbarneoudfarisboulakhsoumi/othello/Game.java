@@ -9,11 +9,11 @@ package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
  * @see Grid
  */
 public class Game {
-	/* We define a player one with player type. */
+	/** Player 1. */
 	private final Player player1;
-	/* We define a player two with player type.. */
+	/** We define a player two with player type. */
 	private final Player player2;
-	/* A game takes a grid with Grid type as attribute. */
+	/** A game takes a grid with Grid type as attribute. */
 	private final Grid grid;
 
 	/**
@@ -26,16 +26,13 @@ public class Game {
 		this.grid = new Grid();
 	}
 
-	public Grid getGrid() {
-		return grid;
-	}
-
-	public Player getPlayer2() {
-		return player2;
-	}
-
-	public Player getPlayer1() {
-		return player1;
+	public void start() {
+		System.out.println(grid);
+		// TODO Boucle jusqu'à victoire
+		// TODO Demander la position 
+		// TODO Tenter le coup grid.putPawn(position, Pawn.BLACK);
+		// TODO 	Sinon -> Redemander
+		// TODO Afficher le nouvel état de la grille.
 	}
 
 }

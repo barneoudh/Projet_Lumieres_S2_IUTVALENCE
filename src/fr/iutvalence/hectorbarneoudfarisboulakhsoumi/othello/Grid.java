@@ -4,19 +4,35 @@ package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
 public class Grid {
 	/*  Constant for the Side size grid. */
 	private static final int SIDE_SIZE = 8;
-	/*  Set pawntable as attribut to the Grid. The grids could be composed of black or white pawn or nothing */
-	private final Pawn[][] grid;
+	/*  Set case table as attribut to the Grid. The grids could be composed of black or white pawn or nothing */
+	private final Case[][] cases;
 
 	/* This is the constructor for the Grid. */
-	public Grid() {
-		this.grid = new Pawn[SIDE_SIZE][SIDE_SIZE];
-	}
-
-	public Pawn[][] getGrid() {
-		return grid;
+	public Grid()
+	{
+		cases = new Case[SIDE_SIZE][SIDE_SIZE];
+		initGrid();
 	}
 	
-	/*public string toString{
-		
-	}*/
+	private void putPawn(Position position, Pawn pawn) {
+		// TODO Verifier case disponible -> Exception 1
+		// TODO Verifier les régles de pose -> Exception 2
+		// TODO Poser le pion.
+		// TODO Répercuter le coup.
+	}
+	
+	@Override
+	public String toString() {
+		// TODO
+		return super.toString();
+	}
+	
+	private void initGrid(){
+		for(int i = 0; i < SIDE_SIZE; i++) {
+			for (int j = 0; j < SIDE_SIZE; j++) {
+				cases[i][j] = new Case(new Position(i,j));
+			}
+		}
+	}
+	
 }
