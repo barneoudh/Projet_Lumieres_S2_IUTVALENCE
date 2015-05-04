@@ -16,7 +16,7 @@ public class Grid {
 		return grid;
 	}
 	
-	public string toString{
+	/*public string toString{
 		
-	}
+	}*/
 }
