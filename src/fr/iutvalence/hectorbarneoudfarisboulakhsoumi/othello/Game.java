@@ -28,11 +28,21 @@ public class Game {
 
 	public void start() {
 		System.out.println(grid);
-		// TODO Boucle jusqu'à victoire
-		// TODO Demander la position 
-		// TODO Tenter le coup grid.putPawn(position, Pawn.BLACK);
-		// TODO 	Sinon -> Redemander
-		// TODO Afficher le nouvel état de la grille.
+
+		
+		while(CASE_AVAILABLE_NUMBER < 64) // while an operation is possible
+		{
+			
+		
+			// TODO Demander la position 
+			// TODO Tenter le coup grid.putPawn(position, Pawn.BLACK);
+			// TODO 	Sinon -> Redemander
+			// TODO Afficher le nouvel état de la grille.
+		
+			
+		}
+		
+		
 	}
 
 }
