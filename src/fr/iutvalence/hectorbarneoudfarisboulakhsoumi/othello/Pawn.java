@@ -6,17 +6,22 @@ package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
  * @author Hector Barneoud / Faris Boulakhsoumi
  * @version 1.0.0
  */
-public enum Pawn {
-	BLACK(1), WHITE(0), NULL(-1);
+public class Pawn {
+	private Couleur couleur;
 
-	private final int num;
-
-	Pawn(final int num) {
-		this.num = num;
+	public Pawn(Couleur couleur) {
+		super();
+		this.couleur = couleur;
 	}
 
-	public int num() {
-		return num;
+	public Couleur getCouleur() {
+		return couleur;
 	}
+	
+	public String toString()
+	{
+		return this.couleur.toString();
+	}
+	
 	
 }

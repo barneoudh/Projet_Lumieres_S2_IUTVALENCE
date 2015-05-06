@@ -15,14 +15,15 @@ public class Game {
 	private final Player player2;
 	/** A game takes a grid with Grid type as attribute. */
 	private final Grid grid;
+	private int CASE_AVAILABLE_NUMBER;
 
 	/**
 	 * @param We assign Black pawns to the player 1
 	 * @param We assign White pawns to the player 2
 	 */
 	public Game(String player1, String player2) {
-		this.player1 = new Player(player1, Pawn.BLACK);
-		this.player2 = new Player(player2, Pawn.WHITE);
+		this.player1 = new Player(player1, Couleur.BLACK);
+		this.player2 = new Player(player2, Couleur.WHITE);
 		this.grid = new Grid();
 	}
 

@@ -11,16 +11,16 @@ public class Player {
 	/* We define a strict string for the nickname of the player. */
 	private final String nickname;
 	/* We define a strict pawnColor for the player. */
-	private final Pawn pawnColor;
+	private final Couleur pawnColor;
 
 	/* We make a Player Constructor. */
-	public Player(String nickName, Pawn pawnC) {
+	public Player(String nickName, Couleur pawnC) {
 		nickname = nickName;
 		pawnColor = pawnC;
 	}
 
 	/* We make a pawncolor getter. */
-	public Pawn color() {
+	public Couleur color() {
 		return pawnColor;
 	}
 
