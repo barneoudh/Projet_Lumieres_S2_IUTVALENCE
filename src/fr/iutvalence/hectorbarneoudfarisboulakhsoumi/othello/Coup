@@ -44,7 +44,7 @@ public class Grid {
 	
 	public void VerifCoup(Position position, Pawn pawn) throws InvalidPlacement();
 	{
-		if(getPawn(this.position-1) != null | getPawn(this.position+1))
+		if(getPawn(this.position-1) != null | getPawn(this.position+1) != null)
 		{
 		if(getPawn(this.position) == null)
 		{
