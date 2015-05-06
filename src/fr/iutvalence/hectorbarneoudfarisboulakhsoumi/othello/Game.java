@@ -16,6 +16,9 @@ public class Game {
 	/** A game takes a grid with Grid type as attribute. */
 	private final Grid grid;
 	private int CASE_AVAILABLE_NUMBER;
+	private int blackCounter = 0;
+	private int whiteCounter = 0;
+	private Player currentPlayer;
 
 	/**
 	 * @param We assign Black pawns to the player 1
@@ -29,11 +32,12 @@ public class Game {
 
 	public void start() {
 		System.out.println(grid);
-
+		whiteCounter = 2;
+		blackCounter = 2;
 		
 		while(CASE_AVAILABLE_NUMBER < 64) // while an operation is possible
 		{
-			
+		
 		
 			// TODO Demander la position 
 			// TODO Tenter le coup grid.putPawn(position, Pawn.BLACK);
@@ -43,7 +47,24 @@ public class Game {
 			
 		}
 		
+		changePlayerTurn();
 		
+	}
+
+	private void changePlayerTurn() {
+		{
+			if (currentPlayer == player1) currentPlayer = player2;
+			else currentPlayer = player1;
+		}
+		
+	}
+
+	public int getWhiteCounter() {
+		return whiteCounter;
+	}
+
+	public int getBlackCounter() {
+		return blackCounter;
 	}
 
 }
