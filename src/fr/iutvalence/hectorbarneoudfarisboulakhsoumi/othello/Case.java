@@ -27,6 +27,6 @@ public class Case {
 	@Override
 	public String toString()
 	{
-		return String.format("|-(%s)-|", this.pawn == null ? "" : pawn);
+		return String.format("|-(%s)-|", this.pawn == null ? " " : pawn);
 	}	
 }

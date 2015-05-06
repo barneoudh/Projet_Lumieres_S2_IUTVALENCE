@@ -13,18 +13,18 @@ public class Grid {
 		
 		cases = new Case[SIDE_SIZE][SIDE_SIZE];
 		initGrid();
-		putPawn();
+		installPawn();
 	}
 	
-	private void putPawn(){
-		this.putPawn(new Position(3,4),new Pawn(Couleur.BLACK));
-		this.putPawn(new Position(4,3),new Pawn(Couleur.BLACK));
-		this.putPawn(new Position(3,3),new Pawn(Couleur.WHITE));
-		this.putPawn(new Position(4,4),new Pawn(Couleur.BLACK));
+	private void installPawn(){
+		this.installPawn(new Position(3,4),new Pawn(Couleur.BLACK));
+		this.installPawn(new Position(4,3),new Pawn(Couleur.BLACK));
+		this.installPawn(new Position(3,3),new Pawn(Couleur.WHITE));
+		this.installPawn(new Position(4,4),new Pawn(Couleur.WHITE));
 		
 	}
 	
-	private void putPawn(Position position, Pawn pawn)
+	private void installPawn(Position position, Pawn pawn)
 	{
 		this.getCase(position).putPawn(pawn);
 	}
@@ -52,26 +52,19 @@ public class Grid {
 		// TODO Poser le pion.
 		// TODO Répercuter le coup.
 			
-
-	
-	/*@Override
-	public String toString() {
-		// TODO
-		return super.toString();
-	}*/
 	
 	public String toString()
 	{
-		String GridAsciiArt = "------------------------------------------------\n";
+		String gridLines = "-------------------------------------------------------\n";
 
 		for (int numeroDeLigne = 0; numeroDeLigne < SIDE_SIZE; numeroDeLigne++)
 		{
 			for (int numeroDeColonne = 0; numeroDeColonne < SIDE_SIZE; numeroDeColonne++)
-				GridAsciiArt += this.getCase(new Position(numeroDeLigne, numeroDeColonne));
-			GridAsciiArt += "\n------------------------------------------------\n";
+				gridLines += this.getCase(new Position(numeroDeLigne, numeroDeColonne));
+			gridLines += "\n-------------------------------------------------------\n";
 		}
 
-		return GridAsciiArt;
+		return gridLines;
 	}
 	
 	
