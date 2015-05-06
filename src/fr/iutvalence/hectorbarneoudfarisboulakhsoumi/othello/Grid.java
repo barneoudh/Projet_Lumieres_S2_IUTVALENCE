@@ -34,11 +34,11 @@ public class Grid {
 		return this.cases[position.getLineNumber()][position.getRowNumber()];
 	}
 	
-	public AvailableCasesVerification() throws NoCasesAvailable; // if no available case
+	/*public AvailableCasesVerification() throws NoCasesAvailable; // if no available case
 	{
 		if(CASE_AVAILABLE_NUMBER == 0) throw new NoCasesAvailable();
 		
-	}
+	}*/
 	
 	/*private void putPawn(Position position, Pawn pawn){
 		this.putPawn(new Position(4,5),new Pawn);
