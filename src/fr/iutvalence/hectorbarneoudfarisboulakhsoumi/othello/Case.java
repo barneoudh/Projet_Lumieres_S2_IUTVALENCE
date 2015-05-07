@@ -24,6 +24,12 @@ public class Case {
 		this.pawn = pawn;	
 	}
 
+	public boolean isAvailable(Position position)
+	{
+		if (this.pawn!= null) return false;
+		else return true;
+	}
+	
 	@Override
 	public String toString()
 	{

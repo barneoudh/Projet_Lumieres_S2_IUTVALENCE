@@ -7,7 +7,10 @@ public class Grid {
 	/*  Set case table as attribut to the Grid. The grids could be composed of black or white pawn or nothing */
 	private final Case[][] cases;
 	
+	private int CASE_AVAILABLE_NUMBER;
+	
 	/* This is the constructor for the Grid. */
+	
 	public Grid()
 	{
 		
@@ -40,8 +43,7 @@ public class Grid {
 		
 	}*/
 	
-	/*private void putPawn(Position position, Pawn pawn){
-		this.putPawn(new Position(4,5),new Pawn);
+	 private void putPawn(Position position, Pawn pawn){
 		// TODO Verifier case disponible -> Exception 1
 		if(CASE_AVAILABLE_NUMBER == 0)
 			try {

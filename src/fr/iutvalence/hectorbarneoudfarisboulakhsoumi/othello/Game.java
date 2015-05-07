@@ -51,7 +51,11 @@ public class Game {
 		
 	}
 
-	private void changePlayerTurn() {
+	public void initCurrentPlayer(){
+		currentPlayer=player1;
+	}
+	
+	public void changePlayerTurn() {
 		{
 			if (currentPlayer == player1) currentPlayer = player2;
 			else currentPlayer = player1;
