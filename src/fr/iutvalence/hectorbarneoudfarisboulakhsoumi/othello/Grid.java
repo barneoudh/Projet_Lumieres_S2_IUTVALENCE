@@ -35,17 +35,20 @@ public class Grid {
 		return this.cases[position.getLineNumber()][position.getRowNumber()];
 	}
 	
+
 	
 	private void putPawn(Position position, Pawn pawn) throws NoCasesAvailable
 	{
+
 		// TODO Verifier case disponible -> Exception 1
+
 		if(CASE_AVAILABLE_NUMBER == 0) throw new NoCasesAvailable();
 		else{
 			// TODO Verifier les régles de pose -> Exception 2
 		}
 		
 	}
-		
+
 		// TODO Poser le pion.
 		// TODO Répercuter le coup.
 			
