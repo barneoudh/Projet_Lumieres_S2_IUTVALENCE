@@ -18,6 +18,7 @@ public class Game {
 	private int blackCounter = 0;
 	private int whiteCounter = 0;
 	private Player currentPlayer;
+	private int CASE_AVAILABLE_NUMBER;
 
 	/**
 	 * @param We assign Black pawns to the player 1
@@ -27,6 +28,7 @@ public class Game {
 		this.player1 = new Player(player1, Couleur.BLACK);
 		this.player2 = new Player(player2, Couleur.WHITE);
 		this.grid = new Grid();
+		this.CASE_AVAILABLE_NUMBER = 64;
 	}
 
 	public void start() {

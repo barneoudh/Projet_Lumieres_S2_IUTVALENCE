@@ -40,11 +40,12 @@ public class Grid {
 	{
 		// TODO Verifier case disponible -> Exception 1
 		if(CASE_AVAILABLE_NUMBER == 0) throw new NoCasesAvailable();
+		else{
+			// TODO Verifier les régles de pose -> Exception 2
+		}
 		
 	}
-			
-	
-		// TODO Verifier les régles de pose -> Exception 2
+		
 		// TODO Poser le pion.
 		// TODO Répercuter le coup.
 			
