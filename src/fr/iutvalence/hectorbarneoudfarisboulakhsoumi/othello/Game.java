@@ -15,7 +15,6 @@ public class Game {
 	private final Player player2;
 	/** A game takes a grid with Grid type as attribute. */
 	private final Grid grid;
-	private int CASE_AVAILABLE_NUMBER;
 	private int blackCounter = 0;
 	private int whiteCounter = 0;
 	private Player currentPlayer;
@@ -35,7 +34,7 @@ public class Game {
 		whiteCounter = 2;
 		blackCounter = 2;
 		
-		while(CASE_AVAILABLE_NUMBER < 64) // while an operation is possible
+		/*while(CASE_AVAILABLE_NUMBER < 64) // while an operation is possible*/
 		{
 		
 		
