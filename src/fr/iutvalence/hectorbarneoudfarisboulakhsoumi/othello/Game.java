@@ -28,6 +28,7 @@ public class Game {
 		this.player1 = new Player(player1, Couleur.BLACK);
 		this.player2 = new Player(player2, Couleur.WHITE);
 		this.grid = new Grid();
+		this.CASE_AVAILABLE_NUMBER = 64;
 	}
 
 	public void start() {

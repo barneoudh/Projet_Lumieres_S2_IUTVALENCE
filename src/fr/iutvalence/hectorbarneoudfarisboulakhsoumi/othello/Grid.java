@@ -40,8 +40,7 @@ public class Grid {
 		
 	}*/
 	
-	/*private void putPawn(Position position, Pawn pawn){
-		this.putPawn(new Position(4,5),new Pawn);
+	private void putPawn(Position position, Pawn pawn){
 		// TODO Verifier case disponible -> Exception 1
 		if(CASE_AVAILABLE_NUMBER == 0)
 			try {
@@ -49,7 +48,7 @@ public class Grid {
 			} catch (NoCasesAvailable e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}*/
+			}
 			
 	
 			
