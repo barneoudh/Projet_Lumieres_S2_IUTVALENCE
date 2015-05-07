@@ -10,18 +10,14 @@ public class Pawn {
 	private Couleur couleur;
 
 	public Pawn(Couleur couleur) {
-		super();
 		this.couleur = couleur;
 	}
 
 	public Couleur getCouleur() {
 		return couleur;
 	}
-	
-	public String toString()
-	{
+
+	public String toString() {
 		return this.couleur.toString();
 	}
-	
-	
 }

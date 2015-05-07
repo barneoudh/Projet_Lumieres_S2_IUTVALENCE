@@ -2,74 +2,124 @@ package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
 
 /* We make the Grid class, in order to describe the attributs and methods. */
 public class Grid {
-	/*  Constant for the Side size grid. */
+	/* Constant for the Side size grid. */
 	private static final int SIDE_SIZE = 8;
-	/*  Set case table as attribut to the Grid. The grids could be composed of black or white pawn or nothing */
+	/*
+	 * Set case table as attribut to the Grid. The grids could be composed of
+	 * black or white pawn or nothing
+	 */
 	private final Case[][] cases;
 	private int CASE_AVAILABLE_NUMBER;
+
 	/* This is the constructor for the Grid. */
-	
-	public Grid()
-	{
-		CASE_AVAILABLE_NUMBER=64;
+
+	public Grid() {
+		CASE_AVAILABLE_NUMBER = 64;
 		cases = new Case[SIDE_SIZE][SIDE_SIZE];
 		initGrid();
 	}
-	
-	private void installPawn(){
-		this.installPawn(new Position(3,4),new Pawn(Couleur.BLACK));
-		this.installPawn(new Position(4,3),new Pawn(Couleur.BLACK));
-		this.installPawn(new Position(3,3),new Pawn(Couleur.WHITE));
-		this.installPawn(new Position(4,4),new Pawn(Couleur.WHITE));
-		
-	}
-	
-	private void installPawn(Position position, Pawn pawn)
-	{
-		this.getCase(position).putPawn(pawn);
-	}
-	
-	private Case getCase(Position position)
-	{
-		return this.cases[position.getLineNumber()][position.getRowNumber()];
-	}
-	
 
-	
-	private void putPawn(Position position, Pawn pawn) throws NoCasesAvailable
-	{
+	public void putPawn(Position position, Pawn pawn) throws NoCasesAvailable, InvalidPosition {
 
 		// TODO Verifier case disponible -> Exception 1
-		if(CASE_AVAILABLE_NUMBER == 0) throw new NoCasesAvailable();
-		else{
-			// TODO Verifier les rÃ©gles de pose -> Exception 2
+		if (CASE_AVAILABLE_NUMBER == 0) throw new NoCasesAvailable();
+		else {
+			if (verifCoup(position,pawn)==false) throw new InvalidPosition();
+			else putPawn(position, pawn); 	
 		}
+
+	}
 	
+	public boolean oppositPawnEncountered(Position position, Pawn pawn){
+		boolean good = false;
+		
+		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber+1][position.rowNumber]){
+			if(i.getPawn().getCouleur()!=pawn.getCouleur()) good = true;
+			else good=false;}
+		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber-1][position.rowNumber]){
+			if(i.getPawn().getCouleur()!=pawn.getCouleur()) good = true;
+			else good = false;}
+		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber][position.rowNumber-1]){
+			if(i.getPawn().getCouleur()!=pawn.getCouleur()) good = true;
+			else good = false;}
+		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber][position.rowNumber+1]){
+			if(i.getPawn().getCouleur()!=pawn.getCouleur()) good = true;
+			else good = false;}
+		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber+1][position.rowNumber+1]){
+			if(i.getPawn().getCouleur()!=pawn.getCouleur()) good = true;
+			else good = false;}
+		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber-1][position.rowNumber-1]){
+			if(i.getPawn().getCouleur()!=pawn.getCouleur()) good = true;
+			else good = false;}
+		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber+1][position.rowNumber-1]){
+			if(i.getPawn().getCouleur()!=pawn.getCouleur()) good = true;
+			else good = false;}
+		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber-1][position.rowNumber+1]){
+			if(i.getPawn().getCouleur()!=pawn.getCouleur()) good = true;
+			else good = false;}
+		
+		if(good) return true;
+		else return false;
 	}
 
-		// TODO Poser le pion.
-		// TODO Répercuter le coup.
-			
-	
-	private void initGrid(){
-		for(int i = 0; i < SIDE_SIZE; i++) {
+	public boolean verifCoup(Position position, Pawn pawn) throws InvalidPlacement
+	{
+		 boolean good = false;
+		
+		if(cases[position.lineNumber+1][position.rowNumber].getPawn().getCouleur() != pawn.getCouleur()
+			||cases[position.lineNumber-1][position.rowNumber].getPawn().getCouleur() != pawn.getCouleur() 
+			||cases[position.lineNumber][position.rowNumber-1].getPawn().getCouleur() != pawn.getCouleur()
+			||cases[position.lineNumber][position.rowNumber+1].getPawn().getCouleur() != pawn.getCouleur()
+			||cases[position.lineNumber+1][position.rowNumber+1].getPawn().getCouleur() != pawn.getCouleur()
+			||cases[position.lineNumber-1][position.rowNumber-1].getPawn().getCouleur() != pawn.getCouleur()
+			||cases[position.lineNumber+1][position.rowNumber-1].getPawn().getCouleur() != pawn.getCouleur()
+			||cases[position.lineNumber-1][position.rowNumber+1].getPawn().getCouleur() != pawn.getCouleur()	
+			)
+		{
+			if(oppositPawnEncountered(position,pawn)) good = true;
+			else good = false;		
+		}
+		
+		if(good) return true;
+		else return false;
+		
+	}
+
+	private void installPawn() {
+		this.installPawn(new Position(3, 4), new Pawn(Couleur.BLACK));
+		this.installPawn(new Position(4, 3), new Pawn(Couleur.BLACK));
+		this.installPawn(new Position(3, 3), new Pawn(Couleur.WHITE));
+		this.installPawn(new Position(4, 4), new Pawn(Couleur.WHITE));
+
+	}
+
+	private void installPawn(Position position, Pawn pawn) {
+		this.getCase(position).putPawn(pawn);
+	}
+
+	private Case getCase(Position position) {
+		// TODO Exception
+		return this.cases[position.getLineNumber()][position.getRowNumber()];
+	}
+
+	private void initGrid() {
+		for (int i = 0; i < SIDE_SIZE; i++) {
 			for (int j = 0; j < SIDE_SIZE; j++) {
-				cases[i][j] = new Case(new Position(i,j));
+				cases[i][j] = new Case(new Position(i, j));
 			}
 		}
 	}
-	
-	public String toString()
-	{
-	String gridLines = "-------------------------------------------------------\n";
-	
-	for (int numeroDeLigne = 0; numeroDeLigne < SIDE_SIZE; numeroDeLigne++)
-	{
-		for (int numeroDeColonne = 0; numeroDeColonne < SIDE_SIZE; numeroDeColonne++)
-				gridLines += this.getCase(new Position(numeroDeLigne, numeroDeColonne));
-				gridLines += "\n-------------------------------------------------------\n";
+
+	public String toString() {
+		String gridLines = "-------------------------------------------------------\n";
+
+		for (int numeroDeLigne = 0; numeroDeLigne < SIDE_SIZE; numeroDeLigne++) {
+			for (int numeroDeColonne = 0; numeroDeColonne < SIDE_SIZE; numeroDeColonne++)
+				gridLines += this.getCase(new Position(numeroDeLigne,
+						numeroDeColonne));
+			gridLines += "\n-------------------------------------------------------\n";
+		}
+
+		return gridLines;
 	}
-	
-	return gridLines;}
-	
 }
