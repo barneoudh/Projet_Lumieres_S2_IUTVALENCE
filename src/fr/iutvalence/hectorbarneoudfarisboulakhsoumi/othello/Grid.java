@@ -43,7 +43,7 @@ public class Grid {
 		
 	}*/
 	
-	 private void putPawn(Position position, Pawn pawn){
+	 /*private void putPawn(Position position, Pawn pawn){
 		// TODO Verifier case disponible -> Exception 1
 		if(CASE_AVAILABLE_NUMBER == 0)
 			try {
