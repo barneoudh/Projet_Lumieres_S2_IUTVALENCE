@@ -50,14 +50,6 @@ public class Grid {
 		// TODO Poser le pion.
 		// TODO Répercuter le coup.
 			
-		
-	
-	
-	@Override
-	public String toString() {
-		// TODO
-		return super.toString();
-	}
 	
 	private void initGrid(){
 		for(int i = 0; i < SIDE_SIZE; i++) {
@@ -66,5 +58,18 @@ public class Grid {
 			}
 		}
 	}
+	
+	public String toString()
+	{
+	String gridLines = "-------------------------------------------------------\n";
+	
+	for (int numeroDeLigne = 0; numeroDeLigne < SIDE_SIZE; numeroDeLigne++)
+	{
+		for (int numeroDeColonne = 0; numeroDeColonne < SIDE_SIZE; numeroDeColonne++)
+				gridLines += this.getCase(new Position(numeroDeLigne, numeroDeColonne));
+				gridLines += "\n-------------------------------------------------------\n";
+	}
+	
+	return gridLines;}
 	
 }
