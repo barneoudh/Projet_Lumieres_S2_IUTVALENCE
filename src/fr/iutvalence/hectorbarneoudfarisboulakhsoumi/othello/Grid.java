@@ -14,7 +14,6 @@ public class Grid {
 		CASE_AVAILABLE_NUMBER=64;
 		cases = new Case[SIDE_SIZE][SIDE_SIZE];
 		initGrid();
-		installPawn();
 	}
 	
 	private void installPawn(){
@@ -41,32 +40,24 @@ public class Grid {
 	{
 
 		// TODO Verifier case disponible -> Exception 1
-
 		if(CASE_AVAILABLE_NUMBER == 0) throw new NoCasesAvailable();
 		else{
 			// TODO Verifier les régles de pose -> Exception 2
 		}
-		
+	
 	}
 
 		// TODO Poser le pion.
-		// TODO Répercuter le coup.
+		// TODO R�percuter le coup.
 			
+		
 	
-	public String toString()
-	{
-		String gridLines = "-------------------------------------------------------\n";
-
-		for (int numeroDeLigne = 0; numeroDeLigne < SIDE_SIZE; numeroDeLigne++)
-		{
-			for (int numeroDeColonne = 0; numeroDeColonne < SIDE_SIZE; numeroDeColonne++)
-				gridLines += this.getCase(new Position(numeroDeLigne, numeroDeColonne));
-			gridLines += "\n-------------------------------------------------------\n";
-		}
-
-		return gridLines;
+	
+	@Override
+	public String toString() {
+		// TODO
+		return super.toString();
 	}
-	
 	
 	private void initGrid(){
 		for(int i = 0; i < SIDE_SIZE; i++) {
