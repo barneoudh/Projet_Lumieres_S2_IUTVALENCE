@@ -9,20 +9,20 @@ public class Grid {
 	 * black or white pawn or nothing
 	 */
 	private final Case[][] cases;
-	private int CASE_AVAILABLE_NUMBER;
+	private int availableCaseNumber;
 
 	/* This is the constructor for the Grid. */
 
 	public Grid() {
-		CASE_AVAILABLE_NUMBER = 64;
+		availableCaseNumber = 64;
 		cases = new Case[SIDE_SIZE][SIDE_SIZE];
 		initGrid();
 	}
 
-	public void putPawn(Position position, Pawn pawn) throws NoCasesAvailable, InvalidPosition {
+	public void putPawn(Position position, Pawn pawn) throws NoCasesAvailable, InvalidPosition, InvalidPlacement {
 
-		// TODO Verifier case disponible -> Exception 1
-		if (CASE_AVAILABLE_NUMBER == 0) throw new NoCasesAvailable();
+		// TODO Verifier case disponible -> Exception 1 ==> A verfier mais on peut virer
+		if (availableCaseNumber == 0) throw new NoCasesAvailable();
 		else {
 			if (verifCoup(position,pawn)==false) throw new InvalidPosition();
 			else putPawn(position, pawn); 	
@@ -30,7 +30,7 @@ public class Grid {
 
 	}
 	
-	public boolean oppositPawnEncountered(Position position, Pawn pawn){
+	public boolean playable(Position position, Pawn pawn){
 		boolean good = false;
 		
 		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber+1][position.rowNumber]){
@@ -58,10 +58,29 @@ public class Grid {
 			if(i.getPawn().getCouleur()!=pawn.getCouleur()) good = true;
 			else good = false;}
 		
-		if(good) return true;
-		else return false;
+		return good;
 	}
 
+	public boolean finishparty() {
+		if (availableCaseNumber == 0) {
+			return true;
+		}
+
+		Pawn black = new Pawn(Couleur.BLACK);
+		Pawn white = new Pawn(Couleur.WHITE);
+		for (int i = 0; i == SIDE_SIZE; i++) {
+			for (int j = 0; j == SIDE_SIZE; j++) {
+				Position position = new Position(i, j);
+				if (cases[i][j].isAvailable()) {
+					if (playable(position, black) || playable(position, white)) {
+						return false;
+					}
+				}
+			}
+		}
+		return true;
+	}
+	
 	public boolean verifCoup(Position position, Pawn pawn) throws InvalidPlacement
 	{
 		 boolean good = false;
@@ -76,7 +95,7 @@ public class Grid {
 			||cases[position.lineNumber-1][position.rowNumber+1].getPawn().getCouleur() != pawn.getCouleur()	
 			)
 		{
-			if(oppositPawnEncountered(position,pawn)) good = true;
+			if(playable(position,pawn)) good = true;
 			else good = false;		
 		}
 		
@@ -105,7 +124,7 @@ public class Grid {
 	private void initGrid() {
 		for (int i = 0; i < SIDE_SIZE; i++) {
 			for (int j = 0; j < SIDE_SIZE; j++) {
-				cases[i][j] = new Case(new Position(i, j));
+				cases[i][j] = new Case();
 			}
 		}
 	}

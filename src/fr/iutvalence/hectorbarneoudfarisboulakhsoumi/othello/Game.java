@@ -28,22 +28,43 @@ public class Game {
 		this.player2 = new Player(player2, Couleur.WHITE);
 		this.grid = new Grid();
 	}
-
+	
+	
 	public void start() {
 		System.out.println(grid);
 		whiteCounter = 2;
 		blackCounter = 2;
 		currentPlayer=player1;
-		/*while(CASE_AVAILABLE_NUMBER < 64) // while an operation is possible*/
+		
+		private void interaction() {
+		java.util.Scanner entree = new java.util.Scanner(System.in);
+		
+		System.out.println("Entrez la ligne");
+		int i = entree.nextInt();
+		System.out.println("Entrez la colonne");
+		int j = entree.nextInt();
+		
+		Position position = new Position(i, j);
+		
+		if(currentPlayer==player1) Pawn pawn = Couleur.BLACK;
+		else Pawn pawn = Couleur.WHITE;
+		
+		if (verifCoup(Position position, Pawn pawn))
 		{
-		
-		
-			// TODO Demander la position 
-			// TODO Tenter le coup grid.putPawn(position, Pawn.BLACK);
-			// TODO 	Sinon -> Redemander
 			// TODO Afficher le nouvel état de la grille.
-		
 			currentPlayer = currentPlayer == player1 ? player2 : player1;
+		}
+		else
+		{
+		// TODO 	Sinon -> Redemander
+			interaction();
+		}
+
+		}
+		while(finishparty() != false) // while the party is not finish */
+		{
+		interaction();
+			
 		}
 		
 		

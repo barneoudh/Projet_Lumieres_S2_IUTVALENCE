@@ -1,16 +1,9 @@
 package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
 
 public class Case {
-
 	private Pawn pawn;
-	private Position position;
-	/**
-	 * @param pawn
-	 * @param position
-	 */
 	
-	public Case(Position position) {
-		this.position=position;
+	public Case() {
 		this.pawn = null;
 	}
 
@@ -24,10 +17,9 @@ public class Case {
 		this.pawn = pawn;	
 	}
 
-	public boolean isAvailable(Position position)
+	public boolean isAvailable()
 	{
-		if (this.pawn!= null) return false;
-		else return true;
+		return this.pawn == null;
 	}
 	
 	@Override
