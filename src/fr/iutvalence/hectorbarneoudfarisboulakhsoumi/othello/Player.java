@@ -1,4 +1,7 @@
 package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
+
+import fr.iutvalence.bandb.othello.Pawn;
+
 /**
  * Othello game: the player.
  * 
@@ -12,7 +15,6 @@ public class Player {
 	private final String nickname;
 	/* We define a strict pawnColor for the player. */
 	private final Couleur pawnColor;
-
 	/* We make a Player Constructor. */
 	public Player(String nickName, Couleur pawnC) {
 		nickname = nickName;

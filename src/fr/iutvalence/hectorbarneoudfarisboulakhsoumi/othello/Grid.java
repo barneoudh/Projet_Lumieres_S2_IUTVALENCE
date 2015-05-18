@@ -19,60 +19,58 @@ public class Grid {
 		initGrid();
 	}
 
-	public void putPawn(Position position, Pawn pawn) throws NoCasesAvailable, InvalidPosition, InvalidPlacement {
+	public void putPawn(Position position, Couleur couleur) throws NoCasesAvailable, InvalidPosition{
 
 		// TODO Verifier case disponible -> Exception 1 ==> A verfier mais on peut virer
 		if (availableCaseNumber == 0) throw new NoCasesAvailable();
 		else {
-			if (verifCoup(position,pawn)==false) throw new InvalidPosition();
-			else putPawn(position, pawn); 	
+			if (verifCoup(position,couleur)==false) throw new InvalidPosition();
+			else putPawn(position, couleur); 	
 		}
 
 	}
 	
-	public boolean playable(Position position, Pawn pawn){
+	public boolean playable(Position position, Couleur couleur){
 		boolean good = false;
 		
 		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber+1][position.rowNumber]){
-			if(i.getPawn().getCouleur()!=pawn.getCouleur()) good = true;
+			if(i.getPawn().getCouleur()!=couleur) good = true;
 			else good=false;}
 		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber-1][position.rowNumber]){
-			if(i.getPawn().getCouleur()!=pawn.getCouleur()) good = true;
+			if(i.getPawn().getCouleur()!=couleur) good = true;
 			else good = false;}
 		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber][position.rowNumber-1]){
-			if(i.getPawn().getCouleur()!=pawn.getCouleur()) good = true;
+			if(i.getPawn().getCouleur()!=couleur) good = true;
 			else good = false;}
 		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber][position.rowNumber+1]){
-			if(i.getPawn().getCouleur()!=pawn.getCouleur()) good = true;
+			if(i.getPawn().getCouleur()!=couleur) good = true;
 			else good = false;}
 		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber+1][position.rowNumber+1]){
-			if(i.getPawn().getCouleur()!=pawn.getCouleur()) good = true;
+			if(i.getPawn().getCouleur()!=couleur) good = true;
 			else good = false;}
 		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber-1][position.rowNumber-1]){
-			if(i.getPawn().getCouleur()!=pawn.getCouleur()) good = true;
+			if(i.getPawn().getCouleur()!=couleur) good = true;
 			else good = false;}
 		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber+1][position.rowNumber-1]){
-			if(i.getPawn().getCouleur()!=pawn.getCouleur()) good = true;
+			if(i.getPawn().getCouleur()!=couleur) good = true;
 			else good = false;}
 		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber-1][position.rowNumber+1]){
-			if(i.getPawn().getCouleur()!=pawn.getCouleur()) good = true;
+			if(i.getPawn().getCouleur()!=couleur) good = true;
 			else good = false;}
 		
 		return good;
 	}
 
-	public boolean finishparty() {
+	public boolean finishParty() {
 		if (availableCaseNumber == 0) {
 			return true;
 		}
 
-		Pawn black = new Pawn(Couleur.BLACK);
-		Pawn white = new Pawn(Couleur.WHITE);
 		for (int i = 0; i == SIDE_SIZE; i++) {
 			for (int j = 0; j == SIDE_SIZE; j++) {
 				Position position = new Position(i, j);
 				if (cases[i][j].isAvailable()) {
-					if (playable(position, black) || playable(position, white)) {
+					if (playable(position,Couleur.BLACK ) || playable(position, Couleur.WHITE)) {
 						return false;
 					}
 				}
@@ -81,21 +79,21 @@ public class Grid {
 		return true;
 	}
 	
-	public boolean verifCoup(Position position, Pawn pawn) throws InvalidPlacement
+	public boolean verifCoup(Position position, Couleur couleur)
 	{
 		 boolean good = false;
 		
-		if(cases[position.lineNumber+1][position.rowNumber].getPawn().getCouleur() != pawn.getCouleur()
-			||cases[position.lineNumber-1][position.rowNumber].getPawn().getCouleur() != pawn.getCouleur() 
-			||cases[position.lineNumber][position.rowNumber-1].getPawn().getCouleur() != pawn.getCouleur()
-			||cases[position.lineNumber][position.rowNumber+1].getPawn().getCouleur() != pawn.getCouleur()
-			||cases[position.lineNumber+1][position.rowNumber+1].getPawn().getCouleur() != pawn.getCouleur()
-			||cases[position.lineNumber-1][position.rowNumber-1].getPawn().getCouleur() != pawn.getCouleur()
-			||cases[position.lineNumber+1][position.rowNumber-1].getPawn().getCouleur() != pawn.getCouleur()
-			||cases[position.lineNumber-1][position.rowNumber+1].getPawn().getCouleur() != pawn.getCouleur()	
+		if(cases[position.lineNumber+1][position.rowNumber].getPawn().getCouleur() != couleur
+			||cases[position.lineNumber-1][position.rowNumber].getPawn().getCouleur() != couleur 
+			||cases[position.lineNumber][position.rowNumber-1].getPawn().getCouleur() != couleur
+			||cases[position.lineNumber][position.rowNumber+1].getPawn().getCouleur() != couleur
+			||cases[position.lineNumber+1][position.rowNumber+1].getPawn().getCouleur() != couleur
+			||cases[position.lineNumber-1][position.rowNumber-1].getPawn().getCouleur() != couleur
+			||cases[position.lineNumber+1][position.rowNumber-1].getPawn().getCouleur() != couleur
+			||cases[position.lineNumber-1][position.rowNumber+1].getPawn().getCouleur() != couleur	
 			)
 		{
-			if(playable(position,pawn)) good = true;
+			if(playable(position,couleur)) good = true;
 			else good = false;		
 		}
 		
