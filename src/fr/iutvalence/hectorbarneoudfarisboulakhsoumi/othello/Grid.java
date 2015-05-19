@@ -109,10 +109,6 @@ public class Grid {
 		}
 		return Direction.NULL;
 	}
-	
-	public void changePawnColor(Position position, Couleur couleur){
-		
-	}
 
 	public boolean finishParty() {
 		if (availableCaseNumber == 0) {
@@ -131,6 +127,88 @@ public class Grid {
 			}
 		}
 		return true;
+	}
+	
+	public void returnThePawns(Position position, Couleur couleur){
+		
+		int line = position.line();
+		int column = position.column();
+		Couleur c = cases[line][column].color();
+		Case currentCase =cases[line][column];
+		
+		if (playable(position,couleur)== Direction.DOWN){
+			for (int i = line+2; i < SIDE_SIZE; i++) {
+				Couleur c2 = cases[i][column].color();
+				currentCase=cases[i][column];
+				if (c2 == null) break;
+				if (c != couleur) continue;
+				currentCase.getPawn().setCouleur(couleur);}
+			}
+		if (playable(position,couleur)== Direction.UP){
+			for (int i = line-2; i < SIDE_SIZE; i--) {
+				Couleur c2 = cases[i][column].color();
+				currentCase=cases[i][column];
+				if (c2 == null) break;
+				if (c != couleur) continue;
+				currentCase.getPawn().setCouleur(couleur);}
+		}
+		if (playable(position,couleur)== Direction.RIGHT){
+			for (int i = column+2; i < SIDE_SIZE; i++) {
+				Couleur c2 = cases[line][i].color();
+				currentCase=cases[line][i];
+				if (c2 == null) break;
+				if (c != couleur) continue;
+				currentCase.getPawn().setCouleur(couleur);}
+		}
+		if (playable(position,couleur)== Direction.LEFT){
+			for (int i = column-2; i < SIDE_SIZE; i--) {
+				Couleur c2 = cases[line][i].color();
+				currentCase=cases[line][i];
+				if (c2 == null) break;
+				if (c != couleur) continue;
+				currentCase.getPawn().setCouleur(couleur);}
+	}	
+		if (playable(position,couleur)== Direction.DOWN_RIGHT){
+			for (int i = column+2; i < SIDE_SIZE; i++){
+				for (int j = line+2; j < SIDE_SIZE; j++){
+				Couleur c2 = cases[j][i].color();
+				currentCase=cases[j][i];
+				if (c2 == null) break;
+				if (c != couleur) continue;
+				currentCase.getPawn().setCouleur(couleur);}
+		} 
+		}
+		if (playable(position,couleur)== Direction.UP_LEFT){
+			for (int i = column-2; i < SIDE_SIZE; i--){
+				for (int j = line-2; j < SIDE_SIZE; j--){
+				Couleur c2 = cases[j][i].color();
+				currentCase=cases[j][i];
+				if (c2 == null) break;
+				if (c != couleur) continue;
+				currentCase.getPawn().setCouleur(couleur);}
+		} 
+		}
+		if (playable(position,couleur)== Direction.UP_RIGHT){
+			for (int i = column+2; i < SIDE_SIZE; i++){
+				for (int j = line-2; j < SIDE_SIZE; j--){
+				Couleur c2 = cases[j][i].color();
+				currentCase=cases[j][i];
+				if (c2 == null) break;
+				if (c != couleur) continue;
+				currentCase.getPawn().setCouleur(couleur);}
+		} 
+		}
+		if (playable(position,couleur)== Direction.UP_RIGHT){
+			for (int i = column-2; i < SIDE_SIZE; i--){
+				for (int j = line+2; j < SIDE_SIZE; j++){
+				Couleur c2 = cases[j][i].color();
+				currentCase=cases[j][i];
+				if (c2 == null) break;
+				if (c != couleur) continue;
+				currentCase.getPawn().setCouleur(couleur);}
+	} 
+	}
+		
 	}
 	
 	public boolean verifCoup(Position position, Couleur couleur)

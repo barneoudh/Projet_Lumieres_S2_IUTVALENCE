@@ -12,6 +12,9 @@ public class Case {
 		return this.pawn != null ? this.pawn.getCouleur() : null;
 	}
 	
+	public Pawn getPawn(){
+		return this.pawn;
+	}
 
 	public boolean isAvailable()
 	{
