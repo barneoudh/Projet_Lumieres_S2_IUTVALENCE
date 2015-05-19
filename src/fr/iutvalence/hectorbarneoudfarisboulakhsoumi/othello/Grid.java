@@ -23,42 +23,95 @@ public class Grid {
 
 		// TODO Verifier case disponible -> Exception 1 ==> A verfier mais on peut virer
 		if (availableCaseNumber == 0) throw new NoCasesAvailable();
-		else {
-			if (verifCoup(position,couleur)==false) throw new InvalidPosition();
-			else putPawn(position, couleur); 	
-		}
-
+		
+		if (!verifCoup(position,couleur)) throw new InvalidPosition();
+		
+		cases[position.line()][position.column()].putPawn(new Pawn(couleur)); 	
 	}
 	
 	public boolean playable(Position position, Couleur couleur){
-		boolean good = false;
 		
-		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber+1][position.rowNumber]){
-			if(i.getPawn().getCouleur()!=couleur) good = true;
-			else good=false;}
-		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber-1][position.rowNumber]){
-			if(i.getPawn().getCouleur()!=couleur) good = true;
-			else good = false;}
-		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber][position.rowNumber-1]){
-			if(i.getPawn().getCouleur()!=couleur) good = true;
-			else good = false;}
-		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber][position.rowNumber+1]){
-			if(i.getPawn().getCouleur()!=couleur) good = true;
-			else good = false;}
-		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber+1][position.rowNumber+1]){
-			if(i.getPawn().getCouleur()!=couleur) good = true;
-			else good = false;}
-		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber-1][position.rowNumber-1]){
-			if(i.getPawn().getCouleur()!=couleur) good = true;
-			else good = false;}
-		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber+1][position.rowNumber-1]){
-			if(i.getPawn().getCouleur()!=couleur) good = true;
-			else good = false;}
-		for(Case i=cases[position.lineNumber][position.rowNumber];i==cases[SIDE_SIZE][SIDE_SIZE];i=cases[position.lineNumber-1][position.rowNumber+1]){
-			if(i.getPawn().getCouleur()!=couleur) good = true;
-			else good = false;}
+		int line = position.line();
+		int column = position.column();
 		
-		return good;
+		
+		Couleur c = cases[line][column].color();
+		if (c == null) {
+			for (int i = line+2; i < SIDE_SIZE; i++) {
+				Couleur c2 = cases[i][column].color();
+				if (c2 == null) break;
+				if (c != couleur) continue;
+				return true;}
+			}
+			
+		if (c == null) {
+			for (int i = line-2; i < SIDE_SIZE; i--) {
+				Couleur c2 = cases[i][column].color();
+				if (c2 == null) break;
+				if (c != couleur) continue;
+				return true;}
+		}
+		
+		if (c == null) {
+			for (int i = column+2; i < SIDE_SIZE; i++) {
+				Couleur c2 = cases[line][i].color();
+				if (c2 == null) break;
+				if (c != couleur) continue;
+				return true;}
+		}
+		
+		if (c == null) {
+			for (int i = column-2; i < SIDE_SIZE; i--) {
+				Couleur c2 = cases[line][i].color();
+				if (c2 == null) break;
+				if (c != couleur) continue;
+				return true;}
+		}
+
+		if (c == null) {
+			for (int i = column+2; i < SIDE_SIZE; i++){
+				for (int j = line+2; j < SIDE_SIZE; j++){
+				Couleur c2 = cases[j][i].color();
+				if (c2 == null) break;
+				if (c != couleur) continue;
+				return true;}
+		} 
+		}
+		
+		if (c == null) {
+			for (int i = column-2; i < SIDE_SIZE; i--){
+				for (int j = line-2; j < SIDE_SIZE; j--){
+				Couleur c2 = cases[j][i].color();
+				if (c2 == null) break;
+				if (c != couleur) continue;
+				return true;}
+		} 
+		}
+		
+		if (c == null) {
+			for (int i = column+2; i < SIDE_SIZE; i++){
+				for (int j = line-2; j < SIDE_SIZE; j--){
+				Couleur c2 = cases[j][i].color();
+				if (c2 == null) break;
+				if (c != couleur) continue;
+				return true;}
+		} 
+		}
+		
+		if (c == null) {
+			for (int i = column-2; i < SIDE_SIZE; i--){
+				for (int j = line+2; j < SIDE_SIZE; j++){
+				Couleur c2 = cases[j][i].color();
+				if (c2 == null) break;
+				if (c != couleur) continue;
+				return true;}
+		} 
+		}
+		return false;
+	}
+	
+	public void changePawnColor(Position position, Couleur couleur){
+		
 	}
 
 	public boolean finishParty() {
@@ -81,24 +134,24 @@ public class Grid {
 	
 	public boolean verifCoup(Position position, Couleur couleur)
 	{
-		 boolean good = false;
+		boolean good = false;
+
 		
-		if(cases[position.lineNumber+1][position.rowNumber].getPawn().getCouleur() != couleur
-			||cases[position.lineNumber-1][position.rowNumber].getPawn().getCouleur() != couleur 
-			||cases[position.lineNumber][position.rowNumber-1].getPawn().getCouleur() != couleur
-			||cases[position.lineNumber][position.rowNumber+1].getPawn().getCouleur() != couleur
-			||cases[position.lineNumber+1][position.rowNumber+1].getPawn().getCouleur() != couleur
-			||cases[position.lineNumber-1][position.rowNumber-1].getPawn().getCouleur() != couleur
-			||cases[position.lineNumber+1][position.rowNumber-1].getPawn().getCouleur() != couleur
-			||cases[position.lineNumber-1][position.rowNumber+1].getPawn().getCouleur() != couleur	
-			)
+		int line = position.line();
+		int column = position.column();
+		if((cases[line+1][column].color() != couleur && cases[line+1][column].color() != null) 
+			||(cases[line-1][column].color() != couleur && cases[line-1][column].color() != null)
+			||(cases[line][column-1].color() != couleur && cases[line][column-1].color() != null)
+			||(cases[line][column+1].color() != couleur && cases[line][column+1].color() != null)
+			||(cases[line+1][column+1].color() != couleur && cases[line+1][column+1].color() != null)
+			||(cases[line-1][column-1].color() != couleur && cases[line-1][column-1].color() != null)
+			||(cases[line+1][column-1].color() != couleur && cases[line+1][column-1].color() != null)
+			||(cases[line-1][column+1].color() != couleur && cases[line-1][column+1].color() != null))
 		{
-			if(playable(position,couleur)) good = true;
-			else good = false;		
+			good = playable(position,couleur);
 		}
 		
-		if(good) return true;
-		else return false;
+		return good;
 		
 	}
 
@@ -116,7 +169,7 @@ public class Grid {
 
 	private Case getCase(Position position) {
 		// TODO Exception
-		return this.cases[position.getLineNumber()][position.getRowNumber()];
+		return this.cases[position.line()][position.column()];
 	}
 
 	private void initGrid() {

@@ -2,21 +2,21 @@ package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
 
 public class Position {
 	
-	public final int lineNumber;
-	public final int rowNumber;
+	private final int lineNumber;
+	private final int columnNumber;
 	/**
 	 * @param x
 	 * @param y
 	 */
 	public Position(int lineNumber, int rowNumber) {
 		this.lineNumber = lineNumber;
-		this.rowNumber = rowNumber;
+		this.columnNumber = rowNumber;
 	}
-	public int getLineNumber() {
+	public int line() {
 		return this.lineNumber;
 	}
-	public int getRowNumber() {
-		return this.rowNumber;
+	public int column() {
+		return this.columnNumber;
 	}
 	
 }

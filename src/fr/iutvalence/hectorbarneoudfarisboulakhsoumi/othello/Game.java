@@ -17,8 +17,8 @@ public class Game {
 	private final Player player2;
 	/** A game takes a grid with Grid type as attribute. */
 	private final Grid grid;
-	private int blackCounter = 0;
-	private int whiteCounter = 0;
+	private int blackCounter = 2;
+	private int whiteCounter = 2;
 	private Player currentPlayer;
 
 	/**
@@ -41,12 +41,13 @@ public class Game {
 		
 		Position position = new Position(i, j);
 		
-		if (grid.playable(position, currentPlayer.color()))
+		if (grid.playable(position, currentPlayer.color())){
 			try {
 				grid.putPawn(position, currentPlayer.color());
 			} catch (NoCasesAvailable | InvalidPosition e) {}
-		else System.out.println("Mauvais placement!");
-		currentPlayer = currentPlayer == player1 ? player2 : player1;
+			currentPlayer = currentPlayer == player1 ? player2 : player1;}
+		else { System.out.println("Mauvais placement!");
+		turn();}
 	}
 	
 

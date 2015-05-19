@@ -1,0 +1,43 @@
+!SESSION 2015-05-19 11:00:09.754 -----------------------------------------------
+eclipse.buildId=4.4.0.I20140606-1215
+java.version=1.7.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fr_FR
+Framework arguments:  -product org.eclipse.epp.package.java.product -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.java.product -data G:\WORKSPACE\ProjetS2 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.core.net 1 0 2015-05-19 11:00:13.515
+!MESSAGE System property http.proxyHost is not set but should be 172.30.1.1.
+
+!ENTRY org.eclipse.core.net 1 0 2015-05-19 11:00:13.515
+!MESSAGE System property http.proxyPort is not set but should be 3128.
+
+!ENTRY org.eclipse.core.net 1 0 2015-05-19 11:00:13.531
+!MESSAGE System property https.proxyHost is not set but should be 172.30.1.1.
+
+!ENTRY org.eclipse.core.net 1 0 2015-05-19 11:00:13.547
+!MESSAGE System property https.proxyPort is not set but should be 3128.
+
+!ENTRY org.eclipse.core.net 1 0 2015-05-19 11:00:13.547
+!MESSAGE System property socksProxyHost is not set but should be 172.30.1.1.
+
+!ENTRY org.eclipse.core.net 1 0 2015-05-19 11:00:13.547
+!MESSAGE System property socksProxyPort is not set but should be 3128.
+
+!ENTRY org.eclipse.core.net 1 0 2015-05-19 11:00:13.547
+!MESSAGE System property https.proxyHost is not set but should be 172.30.1.1.
+
+!ENTRY org.eclipse.core.net 1 0 2015-05-19 11:00:13.562
+!MESSAGE System property https.proxyPort is not set but should be 3128.
+
+!ENTRY org.eclipse.core.net 1 0 2015-05-19 11:00:13.562
+!MESSAGE System property socksProxyHost is not set but should be 172.30.1.1.
+
+!ENTRY org.eclipse.core.net 1 0 2015-05-19 11:00:13.562
+!MESSAGE System property socksProxyPort is not set but should be 3128.
+
+!ENTRY org.eclipse.core.net 1 0 2015-05-19 11:00:13.578
+!MESSAGE System property socksProxyHost is not set but should be 172.30.1.1.
+
+!ENTRY org.eclipse.core.net 1 0 2015-05-19 11:00:13.578
+!MESSAGE System property socksProxyPort is not set but should be 3128.

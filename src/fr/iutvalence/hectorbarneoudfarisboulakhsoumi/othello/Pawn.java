@@ -17,6 +17,10 @@ public class Pawn {
 		return couleur;
 	}
 
+	public void setCouleur(Couleur couleur) {
+		this.couleur = couleur;
+	}
+
 	public String toString() {
 		return this.couleur.toString();
 	}

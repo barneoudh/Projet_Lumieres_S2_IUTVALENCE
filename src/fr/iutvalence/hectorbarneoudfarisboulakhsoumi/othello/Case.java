@@ -7,24 +7,27 @@ public class Case {
 		this.pawn = null;
 	}
 
-	public Pawn getPawn()
+	public Couleur color()
 	{
-		return this.pawn;
+		return this.pawn != null ? this.pawn.getCouleur() : null;
 	}
 	
-	public void putPawn(Pawn pawn)
-	{
-		this.pawn = pawn;	
-	}
 
 	public boolean isAvailable()
 	{
 		return this.pawn == null;
 	}
 	
+	public void putPawn(Pawn pawn) {
+		this.pawn = pawn;
+	}
+	
 	@Override
 	public String toString()
 	{
 		return String.format("|-(%s)-|", this.pawn == null ? " " : pawn);
-	}	
+	}
+
+
+
 }
