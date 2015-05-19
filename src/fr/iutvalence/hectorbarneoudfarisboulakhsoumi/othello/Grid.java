@@ -29,7 +29,7 @@ public class Grid {
 		cases[position.line()][position.column()].putPawn(new Pawn(couleur)); 	
 	}
 	
-	public boolean playable(Position position, Couleur couleur){
+	public Direction playable(Position position, Couleur couleur){
 		
 		int line = position.line();
 		int column = position.column();
@@ -41,7 +41,7 @@ public class Grid {
 				Couleur c2 = cases[i][column].color();
 				if (c2 == null) break;
 				if (c != couleur) continue;
-				return true;}
+				return Direction.DOWN;}
 			}
 			
 		if (c == null) {
@@ -49,7 +49,7 @@ public class Grid {
 				Couleur c2 = cases[i][column].color();
 				if (c2 == null) break;
 				if (c != couleur) continue;
-				return true;}
+				return Direction.UP;}
 		}
 		
 		if (c == null) {
@@ -57,7 +57,7 @@ public class Grid {
 				Couleur c2 = cases[line][i].color();
 				if (c2 == null) break;
 				if (c != couleur) continue;
-				return true;}
+				return Direction.RIGHT;}
 		}
 		
 		if (c == null) {
@@ -65,7 +65,7 @@ public class Grid {
 				Couleur c2 = cases[line][i].color();
 				if (c2 == null) break;
 				if (c != couleur) continue;
-				return true;}
+				return Direction.LEFT;}
 		}
 
 		if (c == null) {
@@ -74,7 +74,7 @@ public class Grid {
 				Couleur c2 = cases[j][i].color();
 				if (c2 == null) break;
 				if (c != couleur) continue;
-				return true;}
+				return Direction.DOWN_RIGHT;}
 		} 
 		}
 		
@@ -84,7 +84,7 @@ public class Grid {
 				Couleur c2 = cases[j][i].color();
 				if (c2 == null) break;
 				if (c != couleur) continue;
-				return true;}
+				return Direction.UP_LEFT;}
 		} 
 		}
 		
@@ -94,7 +94,7 @@ public class Grid {
 				Couleur c2 = cases[j][i].color();
 				if (c2 == null) break;
 				if (c != couleur) continue;
-				return true;}
+				return Direction.UP_RIGHT;}
 		} 
 		}
 		
@@ -104,10 +104,10 @@ public class Grid {
 				Couleur c2 = cases[j][i].color();
 				if (c2 == null) break;
 				if (c != couleur) continue;
-				return true;}
+				return Direction.DOWN_RIGHT;}
 		} 
 		}
-		return false;
+		return Direction.NULL;
 	}
 	
 	public void changePawnColor(Position position, Couleur couleur){
@@ -123,7 +123,8 @@ public class Grid {
 			for (int j = 0; j == SIDE_SIZE; j++) {
 				Position position = new Position(i, j);
 				if (cases[i][j].isAvailable()) {
-					if (playable(position,Couleur.BLACK ) || playable(position, Couleur.WHITE)) {
+					if (playable(position,Couleur.BLACK ) != Direction.NULL) {
+						if (playable(position,Couleur.WHITE)!= Direction.NULL)
 						return false;
 					}
 				}
@@ -148,7 +149,8 @@ public class Grid {
 			||(cases[line+1][column-1].color() != couleur && cases[line+1][column-1].color() != null)
 			||(cases[line-1][column+1].color() != couleur && cases[line-1][column+1].color() != null))
 		{
-			good = playable(position,couleur);
+			if (playable(position,couleur)!=Direction.NULL)
+				good=true;
 		}
 		
 		return good;

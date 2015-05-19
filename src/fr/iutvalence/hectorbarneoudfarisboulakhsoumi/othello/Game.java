@@ -41,7 +41,7 @@ public class Game {
 		
 		Position position = new Position(i, j);
 		
-		if (grid.playable(position, currentPlayer.color())){
+		if (grid.playable(position, currentPlayer.color())!= Direction.NULL){
 			try {
 				grid.putPawn(position, currentPlayer.color());
 			} catch (NoCasesAvailable | InvalidPosition e) {}

@@ -24,4 +24,5 @@ public class Pawn {
 	public String toString() {
 		return this.couleur.toString();
 	}
+	
 }
