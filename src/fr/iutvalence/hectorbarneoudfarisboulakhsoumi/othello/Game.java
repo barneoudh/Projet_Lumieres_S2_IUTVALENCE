@@ -1,6 +1,6 @@
 package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
 
-import fr.iutvalence.bandb.othello.Pawn;
+import java.util.List;
 /**
  * Othello game: the players and the grid.
  * 
@@ -33,40 +33,60 @@ public class Game {
 	}
 	
 	public void turn() {
-		java.util.Scanner entree = new java.util.Scanner(System.in);
+		Couleur couleur = currentPlayer.color();
 		
-		System.out.println("Entrez la ligne");
-		int i = entree.nextInt();
-		System.out.println("Entrez la colonne");
-		int j = entree.nextInt();
+		if(couleur == Couleur.BLACK) 
+			System.out.println("current player : Player 1 (BLACK)");
+		else 
+			System.out.println("current player : Player 2 (WHITE)");
+
+		
+		java.util.Scanner entry = new java.util.Scanner(System.in);
+		
+		System.out.println("Enter the line number:");
+		int i = entry.nextInt();
+		System.out.println("Enter the column number:");
+		int j = entry.nextInt();
 		/** Ask the player which position he wants to put his pawn */
 		
 		Position position = new Position(i, j);
+		List<Direction> directions = grid.playable(position, couleur);
 		
-		if (grid.playable(position, currentPlayer.color())!= Direction.NULL){
-			try {
-				grid.putPawn(position, currentPlayer.color());
-			} catch (NoCasesAvailable | InvalidPosition e) {}
-			currentPlayer = currentPlayer == player1 ? player2 : player1;}
-		else { System.out.println("Mauvais placement!");
-		turn();}
+		if (directions.isEmpty()) {
+			System.out.println("Mauvais placement!");
+			currentPlayer = currentPlayer == player1 ? player2 : player1;
+		}
+		
+		grid.putPawn(position, currentPlayer.color());
+		grid.returnThePawns(position, couleur, directions);
+		
+		currentPlayer = currentPlayer == player1 ? player2 : player1;
+		System.out.println(grid);
 	}
 	
 
 	/** Start the game */
 	public void start() {
 		/** Display the beginning grid */
+		
+		grid.installPawn();
 		System.out.println(grid);
-		whiteCounter = 2;
-		blackCounter = 2;
+		System.out.printf("Black pawns number : %d \n",grid.blackCounter());
+		System.out.printf("White pawns number : %d \n",grid.whiteCounter());
+		System.out.printf("Cases available number : %d \n",grid.availableCaseNumber());
+		
 		/** Player 1 is the first to play */
 		currentPlayer=player1;
 		turn();
+		
 		while(grid.finishParty() != false) // while the party is not finish */
 		{
 		turn();
 			
 		}
+		if (grid.blackCounter()>grid.whiteCounter()) System.out.println("Player 1 is the winner!!");
+		else if (grid.blackCounter()<grid.whiteCounter()) System.out.println("Player 2 is the winner!!");
+		else System.out.println("No winner");
 		
 		
 	}
