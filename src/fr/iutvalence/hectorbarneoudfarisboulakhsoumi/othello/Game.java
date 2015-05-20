@@ -1,7 +1,6 @@
 package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
 
 import fr.iutvalence.bandb.othello.Pawn;
-
 /**
  * Othello game: the players and the grid.
  * 
@@ -17,7 +16,9 @@ public class Game {
 	private final Player player2;
 	/** A game takes a grid with Grid type as attribute. */
 	private final Grid grid;
+	/** Count the black pawns on the grid to know who have won the game */
 	private int blackCounter = 2;
+	/** Count the white pawns on the grid to know who have won the game */
 	private int whiteCounter = 2;
 	private Player currentPlayer;
 
@@ -38,6 +39,7 @@ public class Game {
 		int i = entree.nextInt();
 		System.out.println("Entrez la colonne");
 		int j = entree.nextInt();
+		/** Ask the player which position he wants to put his pawn */
 		
 		Position position = new Position(i, j);
 		
@@ -51,16 +53,15 @@ public class Game {
 	}
 	
 
-
+	/** Start the game */
 	public void start() {
+		/** Display the beginning grid */
 		System.out.println(grid);
 		whiteCounter = 2;
 		blackCounter = 2;
+		/** Player 1 is the first to play */
 		currentPlayer=player1;
 		turn();
-
-		
-
 		while(grid.finishParty() != false) // while the party is not finish */
 		{
 		turn();
