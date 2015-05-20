@@ -1,32 +1,60 @@
 package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
 
+/**
+ * Represent a case on the ckeckerboard
+ * 
+ * @author Hector Barneoud / Faris Boulakhsoumi
+ * 
+ */
+
 public class Case {
-//	A case could contain a pawn 
+/**
+ * The pawn in the case
+ */
 	private Pawn pawn;
-//  The constructor create a case without pawn
+	/**
+	 * To build a case without pawn
+	 */
 	public Case() {
 		this.pawn = null;
 	}
-//  This method return the color of the pawn in the current case
+	/**
+	 * Getter of the color of the pawn in the current case
+	 * @return color of the pawn
+	 */
 	public Couleur color()
 	{
 		return this.pawn != null ? this.pawn.getCouleur() : null;
 	}
-//  This method return the pawn in the current case	
+	/**
+	 * Getter of the pawn in the current case
+	 * @return pawn
+	 */
 	public Pawn getPawn(){
 		return this.pawn;
 	}
-//  Tell if the case is available, if there is any pawn on it
+	/**
+	 * Check if the current case isAvailable
+	 * @return pawn
+	 */
+
 	public boolean isAvailable()
 	{
 		return this.pawn == null;
 	}
-//  Put a pawn in the case	
+	
+	/**
+	 * Put a given pawn in a case
+	 * @param pawn
+	 */
+	
 	public void putPawn(Pawn pawn) {
 		this.pawn = pawn;
 	}
 	
-//  ToString method to show the cases 
+	/**
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString()
 	{
 		return String.format("|-(%s)-|", this.pawn == null ? " " : pawn);

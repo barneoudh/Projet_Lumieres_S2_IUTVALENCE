@@ -3,35 +3,58 @@ package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
 import java.util.LinkedList;
 import java.util.List;
 
-/* We make the Grid class, in order to describe the attributs and methods. */
+/**
+ *  We make the Grid class, in order to describe the attributs and methods. 
+ */
 public class Grid {
-	/* Constant for the Side size grid. */
+	/**
+	 *  Constant for the Side size grid. 
+	*/
 	private static final int SIDE_SIZE = 8;
-	/*
+	/**
 	 * Set case table as attribut to the Grid. The grids could be composed of
-	 * black or white pawn or nothing
+	 *  a table of cases with black or white pawn or nothing
 	 */
 	private final Case[][] cases;
 	private int availableCaseNumber;
 
-	/* This is the constructor for the Grid. */
+	/**
+	 * This is the constructor for the Grid. We create a table of cases 
+	 */
 
 	public Grid() {
 		cases = new Case[SIDE_SIZE][SIDE_SIZE];
 		initGrid();
 	}
 
-	public void putPawn(Position position, Couleur couleur)
-			throws NoCasesAvailable, InvalidPosition {
-
-		// TODO Verifier case disponible -> Exception 1 ==> A verfier mais on
-		// peut virer
+	/**
+	 * Put a paw of the given color, in a given case
+	 * @param position
+	 * @param couleur
+	 */
+	
+	public void putPawn(Position position, Couleur couleur) {
+		
 		cases[position.line()][position.column()].putPawn(new Pawn(couleur));
 	}
+	
+	/**
+	 * To get the available case number of the checkerboard
+	 * @return the available case number of the checkerboard
+	 */
 
 	public int availableCaseNumber() {
 		return (64 - (this.blackCounter() + this.whiteCounter()));
 	}
+	
+	/**
+	 * To determine the direction of the path to each the others pawns of the current player on the checkerboard
+	 * relative to a given position
+	 * @param position
+	 * @param couleur
+	 * @return a list which contains the directions of the paths to the others pawns of the current player 
+	 * on the checkerboard relative to a given position
+	 */
 
 	public List<Direction> playable(Position position, Couleur couleur) {
 		int line = position.line();
@@ -121,6 +144,10 @@ public class Grid {
 		return directions;
 	}
 
+	/**
+	 * To determine if the current party is done
+	 * @return a boolean : true the party is finish, false the party is not finish
+	 */
 	public boolean finishParty() {
 		if (availableCaseNumber == 0) {
 			return true;
@@ -140,6 +167,15 @@ public class Grid {
 		return true;
 	}
 
+	
+	/**
+	 * To turn the pawns of the other player which are in the path of the pawns of the current player on the checkerboard
+	 * relative to a given position in a pawns of the current player
+	 * @param position
+	 * @param couleur
+	 * @param dirs
+	 */
+	
 	public void returnThePawns(Position position, Couleur couleur,
 			List<Direction> dirs) {
 
@@ -229,6 +265,13 @@ public class Grid {
 		}
 
 	}
+	
+	/** 
+	 * To check the playability of the adjacents cases (directly) relative to a given position
+	 * @param position
+	 * @param couleur
+	 * @return boolean : true if at least one adjacent case is playable, false if no adjacent (directly) case playable
+	 */
 
 	public boolean verifCoup(Position position, Couleur couleur) {
 		boolean good = false;
@@ -258,6 +301,10 @@ public class Grid {
 		return good;
 
 	}
+	
+	/** 
+	 * To put the pawns of start, at the start of the game
+	 */
 
 	public void installPawn() {
 		this.installPawn(new Position(3, 4), new Pawn(Couleur.BLACK));
@@ -267,12 +314,16 @@ public class Grid {
 
 	}
 
+	/**
+	 * To put a given pawn in the table case to a given position (put a pawn...)
+	 */
+	
 	private void installPawn(Position position, Pawn pawn) {
 		this.getCase(position).putPawn(pawn);
 	}
 
 	private Case getCase(Position position) {
-		// TODO Exception
+
 		return this.cases[position.line()][position.column()];
 	}
 

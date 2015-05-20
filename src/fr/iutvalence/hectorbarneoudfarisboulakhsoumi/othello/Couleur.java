@@ -1,11 +1,28 @@
 package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
 
+/**
+*  Enumeration which allow the use of the black/white color
+* @author Hector Barneoud / Faris Boulakhsoumi
+*
+*/
+
 public enum Couleur {
-//  Enumeration: 2 Colors available for the pawns: BLACK or WHITE
+
+	/**
+	 * The BLACK Color
+	 */
 	BLACK,
-	WHITE;
 	
-//  WHITE pawns are drawn with a w, BLACK pawns are drawn with a b
+	/**
+	 * The WHITE Color
+	 */
+		
+	WHITE;
+
+	/**
+	 * @see java.lang.Enum#toString()
+	 */
+
 	public String toString()
 	{
 		if (this == WHITE) return "w";

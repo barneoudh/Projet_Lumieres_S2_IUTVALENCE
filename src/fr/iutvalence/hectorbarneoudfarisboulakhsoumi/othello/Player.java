@@ -3,7 +3,7 @@ package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
 import fr.iutvalence.bandb.othello.Pawn;
 
 /**
- * Othello game: the player.
+ * Represent a player.
  * 
  * @author Hector Barneoud / Faris Boulakhsoumi
  * @version 1.0.0
@@ -11,22 +11,35 @@ import fr.iutvalence.bandb.othello.Pawn;
  */
 
 public class Player {
-	/* We define a strict string for the nickname of the player. */
+	/**
+	 *  The nickname of the player
+	 */
 	private final String nickname;
-	/* We define a strict pawnColor for the player. */
+	/**
+	 *  The pawn color of the player.
+	 */
+
 	private final Couleur pawnColor;
-	/* We make a Player Constructor. */
+	
+	/**
+	 *  Build a Player 
+	*/
+	
 	public Player(String nickName, Couleur pawnC) {
 		nickname = nickName;
 		pawnColor = pawnC;
 	}
 
-	/* We make a pawncolor getter. */
+	/**
+	 * Getter for the pawn color 
+	 */
 	public Couleur color() {
 		return pawnColor;
 	}
 
-	/* We make a nickname getter. */
+	/**
+	 *  Getter for the nickname
+	  */
 	public String nickname() {
 		return nickname;
 	}

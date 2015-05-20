@@ -1,17 +1,19 @@
 package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
 
 /**
- * TODO
- * @author barneohe
- *
+ * Othello game: the main.
+ * 
+ * @author Hector Barneoud / Faris Boulakhsoumi
+ * @version 1.0.0
+ * @see Game
  */
+
 public class Othello {
 
 	/**
-	 * TODO
-	 * @param args
+	 * @throws InvalidPositionException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InvalidPositionException {
 		Game game = new Game("Toto","Titi");
 		game.start();
 	}

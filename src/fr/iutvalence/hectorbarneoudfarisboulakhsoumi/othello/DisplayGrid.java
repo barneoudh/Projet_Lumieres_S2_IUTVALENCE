@@ -1,12 +1,16 @@
 package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
 
-/** Projet Othello
- * 
- * @author Hector Barneoud / Faris Boulakhsoumi 
- * TD 3F
- */
+/**
+* The grid display
+* 
+* @author Hector Barneoud / Faris Boulakhsoumi
+* @version 1.0.0
+* @see Player
+* @see Grid
+*/
 
-/* Application which display the start grid */
+/**
+ *  Display the grid */
 
 public class DisplayGrid
 {

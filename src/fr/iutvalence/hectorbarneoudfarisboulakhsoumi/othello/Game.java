@@ -2,7 +2,7 @@ package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
 
 import java.util.List;
 /**
- * Othello game: the players and the grid.
+ *  Game: the players and the grid.
  * 
  * @author Hector Barneoud / Faris Boulakhsoumi
  * @version 1.0.0
@@ -10,21 +10,31 @@ import java.util.List;
  * @see Grid
  */
 public class Game {
-	/** Player 1. */
+	/** 
+	 * The player 1 */
 	private final Player player1;
-	/** We define a player two with player type. */
+	/** 
+	 * The player 2 */
 	private final Player player2;
-	/** A game takes a grid with Grid type as attribute. */
+	/** 
+	 * The Grid */
 	private final Grid grid;
-	/** Count the black pawns on the grid to know who have won the game */
+	/** 
+	 * Number of black pawns on the checkerboard */
 	private int blackCounter = 2;
-	/** Count the white pawns on the grid to know who have won the game */
+	/** 
+	 * Number of white pawns on the checkerboard */
 	private int whiteCounter = 2;
+	
+	/**
+	 * Current player
+	 */
 	private Player currentPlayer;
 
 	/**
-	 * @param We assign Black pawns to the player 1
-	 * @p0aram We assign White pawns to the player 2
+	 * Game constructor
+	 * @param Player 1
+	 * @param Player 2
 	 */
 	public Game(String player1, String player2) {
 		this.player1 = new Player(player1,Couleur.BLACK);
@@ -32,45 +42,66 @@ public class Game {
 		this.grid = new Grid();
 	}
 	
-	public void turn() {
+	/**
+	 * Is the function use to interact with players
+	 */
+	public void turn() throws InvalidPositionException {
 		Couleur couleur = currentPlayer.color();
 		
 		if(couleur == Couleur.BLACK) 
-			System.out.println("current player : Player 1 (BLACK)");
+			System.out.println("Current player : Player 1 (BLACK)");
 		else 
-			System.out.println("current player : Player 2 (WHITE)");
+			System.out.println("Current player : Player 2 (WHITE)");
 
-		
+		/** 
+		 * Ask the player which position he wants to put his pawn */
+
 		java.util.Scanner entry = new java.util.Scanner(System.in);
 		
 		System.out.println("Enter the line number:");
 		int i = entry.nextInt();
 		System.out.println("Enter the column number:");
 		int j = entry.nextInt();
-		/** Ask the player which position he wants to put his pawn */
 		
+		try
+		{
+		if(i>8 || i<0 || j>8 || j<0)
+			throw new InvalidPositionException();
+			
 		Position position = new Position(i, j);
 		List<Direction> directions = grid.playable(position, couleur);
 		
 		if (directions.isEmpty()) {
-			System.out.println("Mauvais placement!");
+			System.out.println("Bad placement!");
 			currentPlayer = currentPlayer == player1 ? player2 : player1;
 		}
 		
-		grid.putPawn(position, currentPlayer.color());
+		grid.putPawn(position, couleur);
 		grid.returnThePawns(position, couleur, directions);
 		
 		currentPlayer = currentPlayer == player1 ? player2 : player1;
+
+		} 
+		catch (InvalidPositionException e)
+		{
+			System.out.println("Invalid Position!");
+
+		}
+		
 		System.out.println(grid);
+
 	}
 	
 
-	/** Start the game */
-	public void start() {
+	/**  Start the game 
+	 * @throws InvalidPositionException */
+	public void start() throws InvalidPositionException {
 		/** Display the beginning grid */
 		
 		grid.installPawn();
 		System.out.println(grid);
+		/** Display the Statistics of game */
+
 		System.out.printf("Black pawns number : %d \n",grid.blackCounter());
 		System.out.printf("White pawns number : %d \n",grid.whiteCounter());
 		System.out.printf("Cases available number : %d \n",grid.availableCaseNumber());
@@ -79,14 +110,15 @@ public class Game {
 		currentPlayer=player1;
 		turn();
 		
-		while(grid.finishParty() != false) // while the party is not finish */
+		while(grid.finishParty() != false) // while the party is not finish
 		{
 		turn();
 			
 		}
-		if (grid.blackCounter()>grid.whiteCounter()) System.out.println("Player 1 is the winner!!");
+		/** We determine the issue of the party */
+		if (grid.blackCounter()>grid.whiteCounter()) System.out.println("Player 1 is the winner!!"); 
 		else if (grid.blackCounter()<grid.whiteCounter()) System.out.println("Player 2 is the winner!!");
-		else System.out.println("No winner");
+		else System.out.println("No winner"); /** In the case of equality between the two players */
 		
 		
 	}
