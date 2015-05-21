@@ -19,17 +19,13 @@ public class Game {
 	/** 
 	 * The Grid */
 	private final Grid grid;
-	/** 
-	 * Number of black pawns on the checkerboard */
-	private int blackCounter = 2;
-	/** 
-	 * Number of white pawns on the checkerboard */
-	private int whiteCounter = 2;
+	
 	
 	/**
 	 * Current player
 	 */
 	private Player currentPlayer;
+	private java.util.Scanner entry;
 
 	/**
 	 * Game constructor
@@ -56,7 +52,7 @@ public class Game {
 		/** 
 		 * Ask the player which position he wants to put his pawn */
 
-		java.util.Scanner entry = new java.util.Scanner(System.in);
+		entry = new java.util.Scanner(System.in);
 		
 		System.out.println("Enter the line number:");
 		int i = entry.nextInt();
@@ -71,17 +67,19 @@ public class Game {
 		Position position = new Position(i, j);
 		List<Direction> directions = grid.playable(position, couleur);
 		
-		if (directions.isEmpty() != false && grid.verifCoup(position, couleur) != true) {
-			System.out.println("Bad placement!");
+		if (grid.verifCoup(position, couleur) != false || directions.isEmpty() != true) {
+			grid.putPawn(position, couleur);
+			grid.returnThePawns(position, couleur, directions);
+			
 			currentPlayer = currentPlayer == player1 ? player2 : player1;
 		}
 		else{
-		grid.putPawn(position, couleur);
-		grid.returnThePawns(position, couleur, directions);}
-		
+		System.out.println("Bad placement!");
 		currentPlayer = currentPlayer == player1 ? player2 : player1;
 
-		} 
+		}
+		
+		}
 		catch (InvalidPositionException e)
 		{
 			System.out.println("Invalid Position!");

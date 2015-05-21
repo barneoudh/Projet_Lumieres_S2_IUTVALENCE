@@ -1,6 +1,6 @@
 package fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello;
 
-import fr.iutvalence.bandb.othello.Pawn;
+import fr.iutvalence.hectorbarneoudfarisboulakhsoumi.othello.Pawn;
 
 /**
  * Represent a player.

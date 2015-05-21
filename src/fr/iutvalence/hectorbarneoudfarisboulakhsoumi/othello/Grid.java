@@ -75,7 +75,7 @@ public class Grid {
 			directions.add(Direction.DOWN);
 		}
 
-		for (int i = line - 1; i == 0; i--) {
+		for (int i = line - 1; i > 0; i--) {
 			Couleur c2 = cases[i][column].color();
 			if (c2 == null)
 				break;
@@ -91,7 +91,7 @@ public class Grid {
 				continue;
 			directions.add(Direction.RIGHT);
 		}
-		for (int i = column - 1; i == 0; i--) {
+		for (int i = column - 1; i > 0; i--) {
 			Couleur c2 = cases[line][i].color();
 			if (c2 == null)
 				break;
@@ -99,9 +99,9 @@ public class Grid {
 				continue;
 			directions.add(Direction.LEFT);
 		}
-		for (int i = column + 1; i < SIDE_SIZE; i++) {
-			for (int j = line + 1; j < SIDE_SIZE; j++) {
-				Couleur c2 = cases[j][i].color();
+		for (int i = line + 1; i < SIDE_SIZE; i++) {
+			for (int j = column + 1; j < SIDE_SIZE; j++) {
+				Couleur c2 = cases[i][j].color();
 				if (c2 == null)
 					break;
 				if (c != couleur)
@@ -110,9 +110,9 @@ public class Grid {
 			}
 		}
 
-		for (int i = column - 1; i == 0; i--) {
-			for (int j = line - 1; j == 0; j--) {
-				Couleur c2 = cases[j][i].color();
+		for (int i = line - 1; i > 0; i--) {
+			for (int j = column - 1; j > 0; j--) {
+				Couleur c2 = cases[i][j].color();
 				if (c2 == null)
 					break;
 				if (c != couleur)
@@ -120,9 +120,9 @@ public class Grid {
 				directions.add(Direction.UP_LEFT);
 			}
 		}
-		for (int i = column + 1; i < SIDE_SIZE; i++) {
-			for (int j = line - 1; j == 0; j--) {
-				Couleur c2 = cases[j][i].color();
+		for (int i = line - 1; i > 0; i--) {
+			for (int j = column + 1; j > SIDE_SIZE; j++) {
+				Couleur c2 = cases[i][j].color();
 				if (c2 == null)
 					break;
 				if (c != couleur)
@@ -131,9 +131,9 @@ public class Grid {
 			}
 		}
 
-		for (int i = column - 1; i == 0; i--) {
-			for (int j = line + 1; j < SIDE_SIZE; j++) {
-				Couleur c2 = cases[j][i].color();
+		for (int i = line + 1; i < SIDE_SIZE; i++) {
+			for (int j = column + 1; j < SIDE_SIZE; j++) {
+				Couleur c2 = cases[i][j].color();
 				if (c2 == null)
 					break;
 				if (c != couleur)
@@ -193,7 +193,7 @@ public class Grid {
 		}
 		
 		if (dirs.contains(Direction.UP)) {
-			for (int i = line - 1; i == 0; i--) {
+			for (int i = line - 1; i > 0; i--) {
 				Case currentCase = cases[i][column];
 				if (currentCase.color() != couleur)
 					currentCase.getPawn().setCouleur(couleur);
@@ -211,7 +211,7 @@ public class Grid {
 			}
 		}
 		if (dirs.contains(Direction.LEFT)) {
-			for (int i = column - 1; i == 0; i--) {
+			for (int i = column - 1; i > 0; i--) {
 				Case currentCase = cases[line][i];
 				if (currentCase.color() != couleur)
 					currentCase.getPawn().setCouleur(couleur);
@@ -220,9 +220,9 @@ public class Grid {
 			}
 		}
 		if (dirs.contains(Direction.DOWN_RIGHT)) {
-			for (int i = column + 1; i < SIDE_SIZE; i++) {
-				for (int j = line + 1; j < SIDE_SIZE; j++) {
-					Case currentCase = cases[j][i];
+			for (int i = line + 1; i < SIDE_SIZE; i++) {
+				for (int j = column + 1; j < SIDE_SIZE; j++) {
+					Case currentCase = cases[i][j];
 					if (currentCase.color() != couleur)
 						currentCase.getPawn().setCouleur(couleur);
 					else
@@ -231,9 +231,9 @@ public class Grid {
 			}
 		}
 		if (dirs.contains(Direction.UP_LEFT)) {
-			for (int i = column - 1; i == 0; i--) {
-				for (int j = line - 1; j == 0; j--) {
-					Case currentCase = cases[j][i];
+			for (int i = line - 1; i > 0; i--) {
+				for (int j = column - 1; j > 0; j--) {
+					Case currentCase = cases[i][j];
 					if (currentCase.color() != couleur)
 						currentCase.getPawn().setCouleur(couleur);
 					else
@@ -242,9 +242,9 @@ public class Grid {
 			}
 		}
 		if (dirs.contains(Direction.UP_RIGHT)) {
-			for (int i = column + 1; i < SIDE_SIZE; i++) {
-				for (int j = line - 1; j == 0; j--) {
-					Case currentCase = cases[j][i];
+			for (int i = line - 1; i > 0; i--) {
+				for (int j = column + 1; j == 0; j++) {
+					Case currentCase = cases[i][j];
 					if (currentCase.color() != couleur)
 						currentCase.getPawn().setCouleur(couleur);
 					else
@@ -253,9 +253,9 @@ public class Grid {
 			}
 		}
 		if (dirs.contains(Direction.DOWN_LEFT)) {
-			for (int i = column - 1; i == 0; i--) {
-				for (int j = line + 1; j < SIDE_SIZE; j++) {
-					Case currentCase = cases[j][i];
+			for (int i = line + 1; i < SIDE_SIZE; i++) {
+				for (int j = column - 1; j > 0; j--) {
+					Case currentCase = cases[i][j];
 					if (currentCase.color() != couleur)
 						currentCase.getPawn().setCouleur(couleur);
 					else
