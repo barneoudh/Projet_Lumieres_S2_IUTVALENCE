@@ -71,13 +71,13 @@ public class Game {
 		Position position = new Position(i, j);
 		List<Direction> directions = grid.playable(position, couleur);
 		
-		if (directions.isEmpty()) {
+		if (directions.isEmpty() != false && grid.verifCoup(position, couleur) != true) {
 			System.out.println("Bad placement!");
 			currentPlayer = currentPlayer == player1 ? player2 : player1;
 		}
-		
+		else{
 		grid.putPawn(position, couleur);
-		grid.returnThePawns(position, couleur, directions);
+		grid.returnThePawns(position, couleur, directions);}
 		
 		currentPlayer = currentPlayer == player1 ? player2 : player1;
 

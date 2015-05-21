@@ -203,7 +203,7 @@ public class Grid {
 		}
 		if (dirs.contains(Direction.RIGHT)) {
 			for (int i = column + 1; i < SIDE_SIZE; i++) {
-				Case currentCase = cases[i][line];
+				Case currentCase = cases[line][i];
 				if (currentCase.color() != couleur)
 					currentCase.getPawn().setCouleur(couleur);
 				else
@@ -212,7 +212,7 @@ public class Grid {
 		}
 		if (dirs.contains(Direction.LEFT)) {
 			for (int i = column - 1; i == 0; i--) {
-				Case currentCase = cases[i][line];
+				Case currentCase = cases[line][i];
 				if (currentCase.color() != couleur)
 					currentCase.getPawn().setCouleur(couleur);
 				else
@@ -222,7 +222,7 @@ public class Grid {
 		if (dirs.contains(Direction.DOWN_RIGHT)) {
 			for (int i = column + 1; i < SIDE_SIZE; i++) {
 				for (int j = line + 1; j < SIDE_SIZE; j++) {
-					Case currentCase = cases[i][j];
+					Case currentCase = cases[j][i];
 					if (currentCase.color() != couleur)
 						currentCase.getPawn().setCouleur(couleur);
 					else
